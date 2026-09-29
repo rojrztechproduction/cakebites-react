@@ -1,0 +1,17 @@
+{
+  "name": "cakebites-react",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cd cakebites-react && npm run dev",
+    "server": "node server/index.js",
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsdom": "^30.0.1",
+    "multer": "^2.4.0",
+    "mysql2": "^3.11.5"
+  }
+}

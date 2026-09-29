@@ -2,45 +2,63 @@
 
 ```
 cakebites-react/
-├── cakebites-react/     ← ✅ React Frontend (Vite) — Deploy to VERCEL
+├── frontend/            ← ✅ React Frontend (Vite) — Deploy to VERCEL
 │   ├── src/
 │   │   ├── main.jsx         (main app component)
 │   │   ├── styles.css       (all styles)
 │   │   ├── catalogData.js   (product data)
 │   │   └── [pages & components]
-│   ├── public/
+│   ├── public/              (images, assets, textures)
 │   ├── index.html
 │   ├── vite.config.js
-│   ├── vercel.json          (Vercel deployment config)
+│   ├── vercel.json          (Vercel SPA routing config)
 │   ├── .env.example         (copy to .env)
 │   └── package.json
 │
 ├── backend/             ← ✅ Express API + MySQL — Deploy to HOSTINGER
 │   ├── index.js             (main server file)
-│   ├── db.js                (MySQL connection)
+│   ├── db.js                (MySQL pool connection)
 │   ├── schema.sql           (database setup)
 │   ├── .env.example         (copy to .env)
 │   ├── .gitignore
 │   └── package.json
 │
-└── server/              ← ⚠️ OLD folder (ignore/delete when ready)
+├── .gitignore           (protects .env and node_modules)
+├── package.json         (root convenience scripts)
+└── README.md
 ```
 
 ---
 
 ## 🚀 Local Development
 
+You can run directly from the root folder:
+
+```bash
+# Start frontend dev server (runs on http://localhost:5173)
+npm run dev
+
+# Or start specific parts:
+npm run dev:frontend
+npm run dev:backend
+
+# Build frontend:
+npm run build
+```
+
+Or run directly from their folders:
+
 ### Backend (Terminal 1)
 ```bash
 cd backend
-cp .env.example .env   # fill in your DB details
+copy .env.example .env   # fill in your DB details
 npm run dev
 # Runs on http://localhost:5000
 ```
 
 ### Frontend (Terminal 2)
 ```bash
-cd cakebites-react
+cd frontend
 npm run dev
 # Runs on http://localhost:5173
 ```
@@ -52,16 +70,16 @@ npm run dev
 ### Frontend → Vercel
 
 1. Go to [vercel.com](https://vercel.com) → New Project
-2. Import your GitHub repo
-3. Set **Root Directory** to: `cakebites-react`
-4. Add environment variable:
+2. Import your GitHub repository
+3. Set **Root Directory** to: `frontend`
+4. Add Environment Variable:
    - `VITE_API_URL` = `https://your-hostinger-backend-url.com`
-5. Click Deploy ✅
+5. Click **Deploy** ✅
 
 ### Backend → Hostinger (Node.js Hosting)
 
 1. Upload the `backend/` folder to Hostinger
-2. In Hostinger cPanel → Node.js → Create Application
+2. In Hostinger cPanel / hPanel → **Node.js** → **Create Application**
    - **Entry point:** `index.js`
    - **Node version:** 18+
 3. Add environment variables in Hostinger:
@@ -91,7 +109,7 @@ CREATE DATABASE `cakebite_react` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_c
 source backend/schema.sql;
 ```
 
-Or upload `backend/schema.sql` via phpMyAdmin → Import
+Or upload [schema.sql](file:///c:/Users/DEV/Desktop/umar/cakebites-react/backend/schema.sql) via phpMyAdmin → Import.
 
 ---
 

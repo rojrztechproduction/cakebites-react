@@ -1,17 +1,12 @@
 {
-  "name": "cakebites-react",
+  "name": "cakebites-workspace",
+  "private": true,
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "cd cakebites-react && npm run dev",
-    "server": "node server/index.js",
-    "start": "node server/index.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "jsdom": "^30.0.1",
-    "multer": "^2.4.0",
-    "mysql2": "^3.11.5"
+    "dev": "npm --prefix frontend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix backend run start"
   }
 }
